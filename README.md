@@ -74,7 +74,7 @@ To check all version maintained by git
 git log
 ```
 
-To create version/commit all changes by git
+To create version/commit all changes in git
 ```
 git commit -m "message"
 ```
@@ -92,6 +92,11 @@ git remote -v
 To know the branch name 
 ```
 git branch
+```
+
+To delete/remove the file from the git
+```
+git restore/remove <filename>
 ```
 
 To setup CI/CD pipeline in heroku we need 3 information
