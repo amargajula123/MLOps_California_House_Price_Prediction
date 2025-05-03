@@ -32,7 +32,7 @@ Discription about "-p" , "-n" and "Vertual Environment"
       there it will going to install the Vertual Environment(venv)
 
 venv = "folder", one folder gets created and inside that all the project
-       required libraries getting stored
+       required libraries getting stored which we installed,
 ```
 
 for windows use this 
