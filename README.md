@@ -2,7 +2,7 @@
 MLOps_California_House_Price_Prediction is an end-to-end machine learning project designed to predict house prices in California using modern MLOps practices. This project combines data science, model development, and deployment pipelines to create a scalable and reproducible housing price prediction system.
 
 
-### Software and account Requirement
+### Software and account Requirements
 
 
 Application url:
@@ -101,9 +101,9 @@ git restore/remove <filename>
 
 To setup CI/CD pipeline in heroku we need 3 information
 
-1. HEROKU_EMAIL =
-2. HEROKU_API_KEY = 
-3. HEROKU_APP_NAME = amargajula123
+1. HEROKU_EMAIL = amargknr@gmail.com
+2. HEROKU_API_KEY = HRKU-50374ebf-b026-421f-a45a-ed64465edf89
+3. HEROKU_APP_NAME = ml-app-test
 
 To stop app
 
@@ -114,6 +114,9 @@ heroku ps:scale web=0 --app <app name>
 BUILD DOCKER IMAGE
 ```
 docker build -t <image_name>:<tagname> .
+
+Ex :-
+  docker build -t ml-project:new1 .
 ```
 > Note: Image name for docker must be lowercase
 
@@ -125,7 +128,7 @@ docker images
 
 Run docker image
 ```
-docker run -p 5000:5000 -e PORT=5000 f8c749e73678
+docker run -p 5000:5000 -e PORT=5000 <f8c749e73678/id of image>
 ```
 
 To check running container in docker
