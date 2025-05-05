@@ -1,36 +1,53 @@
+# Workflow name
 name: Deploy to Heroku (Git-based)
+
+# Trigger deployment on every push to main branch
 on:
   push:
     branches: [main]
 
+# Workflow job
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout code from the GitHub repository
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install Heroku CLI  # 🛠 Fix: Install Heroku CLI
+      # Step 2: Install Heroku CLI (needed for Docker commands)
+      - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install.sh | sh
 
+      # Step 3: Set up Python environment (required if using Python for testing or linting)
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
+      # Step 4: Install dependencies from requirements.txt
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Step 5: Set Heroku stack to 'container' for Docker deployment
       - name: Set Heroku to Use Docker
         run: heroku stack:set container --app ${{ secrets.HEROKU_APP_NAME }}
 
+      # Step 6: Deploy the Docker container to Heroku
       - name: Deploy to Heroku Using Docker
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          # 🔐 Email associated with your Heroku account
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          
+          # 🔐 Heroku API key from your account settings
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          
+          # 🔐 The name of your Heroku app
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          
+          # Use Docker to deploy
           usedocker: true
