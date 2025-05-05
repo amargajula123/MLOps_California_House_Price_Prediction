@@ -1,0 +1,9 @@
+#PyYAML
+#dill
+#evidently==0.6.5  # Fixed version
+#matplotlib
+#pydantic>=1.10.13  # Fixed version to avoid issues
+#-e .
+
+
+housing_predictor.egg-info is nothing but our custom/user defined "Package" information
