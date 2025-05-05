@@ -78,6 +78,10 @@ To create version/commit all changes in git
 ```
 git commit -m "message"
 ```
+To commit version/changes without doing any modification
+```
+git commit --allow-empty -m "Comment your wish"
+``` 
 
 To send version/changes to github
 ```
