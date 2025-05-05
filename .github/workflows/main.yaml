@@ -15,13 +15,15 @@ jobs:
       - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Deploy to Heroku via Docker
-        uses: gonuit/heroku-docker-deploy@v1.3.3
-        with:
-          email: ${{ secrets.HEROKU_EMAIL }}
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: "--no-cache"
-          process_type: web
+      - name: Debug: Check Heroku CLI Version
+        run: heroku --version
+
+      - name: Build Docker image and Deploy to Heroku
+        run: |
+          docker build -t heroku-app .
+          heroku container:login
+          heroku container:push web --app ${{ secrets.HEROKU_APP_NAME }}
+          heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Verify App is Running
+        run: heroku open --app ${{ secrets.HEROKU_APP_NAME }}
