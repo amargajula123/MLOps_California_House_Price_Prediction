@@ -163,6 +163,13 @@ Ans :-
     what is the "data distribution" with respect to "training dataset" is to be equal to the
     "data distribution" with respect to "testing dataset" is called "stratified split"
 
+why we are doing straitified split ?
+ans :-
+     when you train your model with the help of training dataset and we know training is the 
+     representation of Population dataset, so after training our model
+     we also need to perform test the model/evaluate with "test dataset", so it require that 
+     the distribution of "test dataset" is also similer to the trainig dataset 
+
 Data Drift:
 When your "Datset" statistics gets change we call it as data drift
 
