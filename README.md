@@ -158,7 +158,10 @@ Install ipykernel for jupyter notebook
 ```
 pip install ipykernel
 ```
-
+what is stratified split ?
+Ans :-
+    what is the "data distribution" with respect to "training dataset" is to be equal to the
+    "data distribution" with respect to "testing dataset" is called "stratified split"
 
 Data Drift:
 When your "Datset" statistics gets change we call it as data drift
