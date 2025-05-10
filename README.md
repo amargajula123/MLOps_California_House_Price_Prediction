@@ -171,7 +171,7 @@ ans :-
      the distribution of "test dataset" is also similer to the trainig dataset 
 
 Data Drift:
-When your "Datset" statistics gets change we call it as data drift
+When your "Datset" statistics gets change we call it as "data drift"
 
 what we do in Data_draft ?
 

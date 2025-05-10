@@ -82,7 +82,39 @@ class Configuration:
 
     def get_data_validation_config(self)->DataValidationConfig:
         try:
-           pass
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            data_validation_artifact_dir=os.path.join(
+                artifact_dir,
+                DATA_VALIDATION_ARTIFACT_DIR_NAME,
+                self.time_stamp
+                )
+            
+            data_validation_config = self.config_info[DATA_VALIDATION_CONFIG_KEY]
+
+            # this schema_file_path is a part of input
+            schema_file_path=os.path.join(ROOT_DIR,
+            data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],
+            data_validation_config[DATA_VALIDATION_SCHEMA_FILE_NAME_KEY]
+            )
+            
+            # this report_file_path is a part of output 
+            report_file_path=os.path.join(data_validation_artifact_dir,
+            data_validation_config[DATA_VALIDATION_REPORT_FILE_NAME_KEY],
+            )
+             # this report_page_file_path is a part of output 
+            report_page_file_path=os.path.join(data_validation_artifact_dir,
+            data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY],
+            )
+
+            #  "schema_file_path","report_file_path","report_page_file_path
+            data_validation_config = DataValidationConfig(
+                schema_file_path=schema_file_path,
+                report_file_path=report_file_path,
+                report_page_file_path=report_page_file_path 
+            )
+            logging.info(f"Data validation config: {data_validation_config}")
+            return data_validation_config
         except Exception as e:
             raise HousingException(e,sys) from e
         
@@ -112,6 +144,7 @@ class Configuration:
         except Exception as e:
             raise HousingException(e,sys) from e
 
+    # this is Root folder Artifact from this folder we generate Pipeline "Components" 
     def get_training_pipeline_config(self)->TrainingPipelineConfig:
         try:
             training_pipeline_config=self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
@@ -121,7 +154,7 @@ class Configuration:
             )
             
             training_pipeline_config = TrainingPipelineConfig(artifact_dir=artifact_dir)
-            logging.info(f"Training Pipeline Config : {training_pipeline_config}")
+            logging.info(f"Training Pipeline Config : {training_pipeline_config} \n")
             return training_pipeline_config
         
         except Exception as e:

@@ -1,6 +1,8 @@
+numpy
 Flask
 gunicorn
-numpy
-scikit-learn  
+scikit-learn
 pandas
+pyYAML
+evidently==0.6.0
 -e .

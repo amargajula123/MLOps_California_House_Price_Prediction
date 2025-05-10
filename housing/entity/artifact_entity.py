@@ -12,7 +12,8 @@ DataValidationArtifact = namedtuple("DataValidationArtifact",["schema_file_path"
                                                               "report_file_path",
                                                               "report_page_file_path",
                                                               "is_validated",
-                                                              "message"])
+                                                              "message",
+                                                              "evidently_github"])
 
 
 DataTransformationArtifact = namedtuple("DataTransformationArtifact",["is_transformed",
