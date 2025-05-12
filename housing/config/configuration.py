@@ -155,7 +155,7 @@ class Configuration:
                 preprocessed_object_file_path=preprocessed_object_file_path
             )
 
-            logging.info(f"Data Transformation config: {data_transformation_config}")
+            logging.info(f"Data Transformation Config: {data_transformation_config}")
             return data_transformation_config
         
         except Exception as e:

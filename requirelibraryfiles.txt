@@ -1,5 +1,5 @@
 #PyYAML
-#dill
+#dill   # for the preprocessing object
 #evidently==0.6.5  # Fixed version
 #matplotlib
 #pydantic>=1.10.13  # Fixed version to avoid issues
