@@ -11,8 +11,8 @@ def main():
         # +++++++++get_data_validation_config() Done++++++++++
 
         # +++++++++get_data_ingestion_config() Check++++++++++
-        #data_ingestion_config = Configuration().get_data_ingestion_config()
-        #print(data_ingestion_config)
+        # data_ingestion_config = Configuration().get_data_ingestion_config()
+        # print(data_ingestion_config)
         # +++++++++get_data_ingestion_config() Done++++++++++
 
 
