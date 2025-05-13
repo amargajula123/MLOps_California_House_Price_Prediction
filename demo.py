@@ -21,6 +21,8 @@ def main():
         pipeline = Pipeline()
         pipeline.run_pipeline()
         logging.info(f"{'='*10}Pipeline is completed.{'='*10} \n")
+
+        
     except Exception as e:
             logging.error(f"Error is  ={e} ")
             print("exception = ",e)

@@ -66,3 +66,16 @@ TARGET_COLUMN_KEY="target_column"
 #   transformed_test_dir: test  # transformed_test_dir
 #   preprocessing_dir: preprocessed  # for storing picle file into any Dir so that "preprocessed" is a Dir
 #   preprocessed_object_file_name: preprocessed.pkl  # preprocessed.pkl file 
+
+
+# Data transformation related variables for shema dataset
+COLUMN_TOTAL_ROOMS = "total_rooms"
+COLUMN_POPULATION = "population"
+COLUMN_HOUSEHOLDS = "households"
+COLUMN_TOTAL_BEDROOM = "total_bedrooms"
+DATASET_SCHEMA_COLUMNS_KEY=  "columns"
+
+NUMERICAL_COLUMN_KEY="numerical_columns"
+CATEGORICAL_COLUMN_KEY = "categorical_columns"
+
+TARGET_COLUMN_KEY="target_column"
