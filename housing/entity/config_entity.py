@@ -43,7 +43,7 @@ ModelEvaluationConfig = namedtuple("ModelEvaluationConfig", ["model_evaluation_f
 # in model evaluation we evaluate our model with the test dataset at the same time we compare
 # all the model with the Best_Model
 
-# time_stamp : when you compare your model with the base_model  at what time it actually done that will store
+# time_stamp : when you compare your model with the base_model at what time it actually done that will store
 
 ModelPusherConfig = namedtuple("ModelPusherConfig", ["export_dir_path"])
 
