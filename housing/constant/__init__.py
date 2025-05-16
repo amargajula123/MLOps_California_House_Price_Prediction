@@ -79,3 +79,16 @@ NUMERICAL_COLUMN_KEY="numerical_columns"
 CATEGORICAL_COLUMN_KEY = "categorical_columns"
 
 TARGET_COLUMN_KEY="target_column"
+
+
+# Model Training related Variables
+
+MODEL_TRAINER_ARTIFACT_DIR = "model_trainer"
+MODEL_TRAINER_CONFIG_KEY = "model_trainer_config"
+MODEL_TRAINER_TRAINED_MODEL_DIR_KEY = "trained_model_dir"  # directory of the Model
+MODEL_TRAINER_TRAINED_MODEL_FILE_NAME_KEY="model_file_name" # file name of pickle file
+MODEL_TRAINER_BASE_ACCURACY_KEY = "base_accuracy"    
+MODEL_TRAINER_MODEL_CONFIG_DIR_KEY = "model_config_dir"  # config dir                      
+MODEL_TRAINER_MODEL_CONFIG_FILE_NAME_KEY = "model_config_file_name"  # model.yaml 
+
+

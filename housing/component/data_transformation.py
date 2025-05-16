@@ -165,12 +165,17 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
-
+ 
                     #   "np.c_" helps in concatination
             #Combining Train "input_feature_train_arr" and "target_feature_train_df" 
+            # NOTEE:= we are not going to distrub Terget feature 
+            # we only use "fit" after "transform" or "fit_trasform" for the Train ing dataset
+             
+            # for the "Testingdata" we are going to use "transform" only, 
+
             train_arr = np.c_[input_feature_train_arr , np.array(target_feature_train_df)]
             #Combining Test "input_feature_test_arr" and "target_feature_test_df"
-            test_arr = np.c_[input_feature_test_arr , np.array(target_feature_tets_df)]
+            test_arr = np.c_[input_feature_test_arr , np.array(target_feature_tets_df)] 
 
             transformed_train_dir = self.data_transformation_config.transformed_train_dir
             transformed_test_dir = self.data_transformation_config.transformed_test_dir
@@ -194,16 +199,16 @@ class DataTransformation:
 
             data_transformation_artifact = DataTransformationArtifact(
                 is_transformed=True,                          
-                message=f"Data transformation Successfull :",
+                message=f"Data transformation successfull :",
                 transformed_train_file_path=transformed_train_file_path,
                 transformed_test_file_path=transformed_test_file_path,
                 preprocessed_object_file_path=preprocessed_object_file_path
             )
 
-            logging.info(f"Data trannsformation artifact: {data_transformation_artifact}")
+            logging.info(f"Data Trannsformation Artifact: {data_transformation_artifact}")
             return data_transformation_artifact
         except Exception as e:
             raise HousingException(e,sys) from e
         
     def __del__(self):
-        logging.info(f"{'='*20}Data Transformation log completed.{'='*20} \n\n")
+        logging.info(f"{'='*20}Data Transformation log Completed.{'='*20} \n\n")
