@@ -71,6 +71,10 @@ class ModelTrainer:
             
             base_accuracy = self.model_trainer_config.base_accuracy
             logging.info(f"Expected accuracy: {base_accuracy}")
+            train_test_acc_threshold=self.model_trainer_config.train_test_acc_threshold
+            logging.info(f"Expected Train and Test Accurary threshold: {train_test_acc_threshold}")
+
+
 
             logging.info(f"Initiating operation model selecttion")
             best_model = model_factory.get_best_model(X=x_train,y=y_train,base_accuracy=base_accuracy)
@@ -83,12 +87,15 @@ class ModelTrainer:
             model_list = [model.best_model for model in grid_searched_best_model_list ]
             logging.info(f"Evaluation all trained model on training and testing dataset both\n")
             logging.info(f"MODEL LIST => [{model_list}]\n")
+
+        
             metric_info:MetricInfoArtifact = evaluate_regression_model(model_list=model_list,
                                                                        X_train=x_train,
                                                                        y_train=y_train,
                                                                        X_test=x_test,
                                                                        y_test=y_test,
-                                                                       base_accuracy=base_accuracy)
+                                                                       base_accuracy=base_accuracy,
+                                                                       train_test_acc_threshold=train_test_acc_threshold)
 
             logging.info(f"Best found model on both training and testing dataset.")
             
@@ -102,13 +109,18 @@ class ModelTrainer:
             save_object(file_path=trained_model_file_path,obj=housing_model)
 
 
+            train_test_acc_threshold = self.model_trainer_config.train_test_acc_threshold
+            logging.info(f"Expecting Training and Testing accuracy threshhold : {train_test_acc_threshold}")
+
+
             model_trainer_artifact=  ModelTrainerArtifact(is_trained=True,message="Model Trained successfully",
                                                             trained_model_file_path=trained_model_file_path,
                                                             train_rmse=metric_info.train_rmse,
                                                             test_rmse=metric_info.test_rmse,
                                                             train_accuracy=metric_info.train_accuracy,
                                                             test_accuracy=metric_info.test_accuracy,
-                                                            model_accuracy=metric_info.model_accuracy
+                                                            model_accuracy=metric_info.model_accuracy,
+                                                            train_test_acc_threshold=train_test_acc_threshold
             
             )
 
@@ -122,13 +134,13 @@ class ModelTrainer:
 
 
         # loading transformed and testng dataset
-        # reading model.yaml frim config  folder
+        # reading model.yaml from config  folder
         # getting "best_model" on training dataset
-        # evaluating models on both training & testing dataset --> model object
+        # evaluating models on both training & testing dataset --> "model_object"
         # and then loading preprosesing_object from "data_tranformation_artifact"
 
              ## at last we created custom model object
-        # custom model object by combining both, preprosesing_object and model object (trained_model_object)
+        # custom model object by combining both, preprosesing_object and "model_object" (trained_model_object)
         # saving custome model object as {.pkl}
 
         # return model_trainer_artifact

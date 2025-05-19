@@ -184,11 +184,13 @@ class Configuration:
             )
 
             base_accuracy = model_trainer_config_info[MODEL_TRAINER_BASE_ACCURACY_KEY]
+            train_test_acc_threshold = model_trainer_config_info[MODEL_TRAINER_TRAIN_TEST_ACC_THRESHOLD_KEY]
 
             model_trainer_config = ModelTrainerConfig(
                 trained_model_file_path=trained_model_file_path,
                 base_accuracy=base_accuracy,
-                model_config_file_path=model_config_file_path
+                model_config_file_path=model_config_file_path,
+                train_test_acc_threshold=train_test_acc_threshold
             )
 
             logging.info(f"Model Trainer Config: {model_trainer_config}")
@@ -198,14 +200,41 @@ class Configuration:
         
     def get_model_evaluation_config(self) ->ModelEvaluationConfig:
         try:
-            pass
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            model_evaluation_config_info = self.config_info[MODEL_EVALUATION_CONFIG_KEY]
+
+            model_evaluation_file_path = os.path.join(
+                artifact_dir,
+                MODEL_EVALUATION_ARTIFACT_DIR,
+                model_evaluation_config_info[MODEL_EVALUATION_FILE_NAME_KEY]                                    
+
+            )
+
+            time_stamp=self.time_stamp
+
+            model_evaluation_config = ModelEvaluationConfig(
+                model_evaluation_file_path=model_evaluation_file_path,
+                time_stamp=time_stamp)
+            
+            logging.info(f"Model Evaluation Config: {model_evaluation_config}")
+            return model_evaluation_config
+
         except Exception as e:
             raise HousingException(e,sys) from e
 
 
     def get_model_pusher_config(self) -> ModelPusherConfig:
         try:
-            pass
+            time_stamp = f"{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            model_pusher_config_info = self.config_info[MODEL_PUSHER_CONFIG_KEY]
+            export_dir_path = os.path.join(ROOT_DIR, model_pusher_config_info[MODEL_PUSHER_MODEL_EXPORT_DIR_KEY],
+                                           time_stamp)
+
+            model_pusher_config = ModelPusherConfig(export_dir_path=export_dir_path)
+            logging.info(f"Model pusher config {model_pusher_config}")
+            return model_pusher_config
+
         except Exception as e:
             raise HousingException(e,sys) from e
 

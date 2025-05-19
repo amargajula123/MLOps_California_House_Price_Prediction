@@ -14,6 +14,8 @@ def main():
         # data_ingestion_config = Configuration().get_data_ingestion_config()
         # print(data_ingestion_config)
         # +++++++++get_data_ingestion_config() Done++++++++++
+        # model_pusher_config = Configuration().get_model_pusher_config()
+        # print(model_pusher_config)
 
 
 

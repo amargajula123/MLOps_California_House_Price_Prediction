@@ -191,3 +191,10 @@ bassically we  compare statistics of both datasets
 ```
 heroku stack:set container --app  {here you HEROKU APP NAME}
 ```
+
+
+Continuous Training (CT) means:
+
+```
+Automatically re-running your ML pipeline (data ingestion → training → evaluation → deployment) when new data or config changes, without modifying the code.
+```

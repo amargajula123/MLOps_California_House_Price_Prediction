@@ -1,0 +1,5 @@
+best_model:
+  model_path: D:\ML\MLOps_house_price_project\housing\artifact\model_trainer\2025-03-09-10-17-04\trained_model\model.pkl
+history:
+  2025-03-06-09-22-26:
+    model_path: D:\ML\MLOps_house_price_project\housing\artifact\model_trainer\2025-03-06-09-18-23\trained_model\model.pkl

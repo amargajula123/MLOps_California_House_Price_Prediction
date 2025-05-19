@@ -25,7 +25,8 @@ DataTransformationConfig = namedtuple("DataTransformationConfig", ["add_bedroom_
 
 ModelTrainerConfig = namedtuple("ModelTrainerConfig", ["trained_model_file_path",
                                                        "base_accuracy",
-                                                       "model_config_file_path"])
+                                                       "model_config_file_path",
+                                                       "train_test_acc_threshold"])
 
 # trained_model_file_path : if we train our model we have to export that into pickle file that location
 # we specify at  trained_model_file_path

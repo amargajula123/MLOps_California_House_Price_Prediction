@@ -36,20 +36,23 @@ BestModel = namedtuple("BestModel", ["model_serial_number",
                                      "best_score", ])
 
 MetricInfoArtifact = namedtuple("MetricInfoArtifact",["model_name", 
-                                                      "model_object", 
+                                                      "model_object",  # model_object is nuthong but trained model_object
                                                       "train_rmse", 
-                                                      "test_rmse", 
+                                                      "test_rmse",
+                                                      "train_mse", 
+                                                      "test_mse",
                                                       "train_accuracy",
                                                       "test_accuracy", 
                                                       "model_accuracy", 
-                                                      "index_number"])
+                                                      "index_number",
+                                                      "train_test_acc_threshold"])
 
 
 def evaluate_classification_model(model_list: list, X_train:np.ndarray, y_train:np.ndarray, X_test:np.ndarray, y_test:np.ndarray, base_accuracy:float=0.6)->MetricInfoArtifact:
     pass
 
 
-def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.ndarray, X_test:np.ndarray, y_test:np.ndarray, base_accuracy:float=0.6) -> MetricInfoArtifact:
+def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.ndarray, X_test:np.ndarray, y_test:np.ndarray, base_accuracy:float=0.6,train_test_acc_threshold:float=0.05) -> MetricInfoArtifact:
     """
     Description:
     This function compare multiple regression model return best model
@@ -85,10 +88,15 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
             #Calculating r squared score on training and testing dataset
             train_acc = r2_score(y_train, y_train_pred)
             test_acc = r2_score(y_test, y_test_pred)
+
+            #Calculating "mean squared error" on training and testing dataset
+            train_mse = mean_squared_error(y_train, y_train_pred)
+            test_mse = mean_squared_error(y_test, y_test_pred)
             
             #Calculating root mean squared error on training and testing dataset
             train_rmse = np.sqrt(mean_squared_error(y_train, y_train_pred))
             test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+
 
             # Calculating "harmonic mean" of train_accuracy and test_accuracy
             # in case of "harmonic mean" it give higher weightage to the lower accuracy
@@ -104,8 +112,8 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
             logging.info(f"{'*'*30} Loss {'*'*30}")
             logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}].") 
 
-            if diff_test_train_acc > 0.05:
-                logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {0.05}.\nSo we dont take this one, which accuracy is close to 0.05 will take that as best Model")
+            if diff_test_train_acc > train_test_acc_threshold: # train_test_acc_threshold = 0.05:
+                logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {train_test_acc_threshold}.\nSo we dont take this one, which accuracy is close to 0.05 will take that as best Model")
 
             logging.info(f"Train root mean squared error: [{train_rmse}].")
             logging.info(f"Test root mean squared error: [{test_rmse}].")
@@ -113,18 +121,21 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
 
             #if model accuracy is greater than base accuracy and train and test score is within certain thershold
             #we will accept that model as accepted model
-            if model_accuracy >= base_accuracy and diff_test_train_acc < 0.05:
+            if model_accuracy >= base_accuracy and diff_test_train_acc < train_test_acc_threshold:
                 logging.info(f" my BASE ACCURACY = [{base_accuracy}]\n\n")
                 base_accuracy = model_accuracy
                 logging.info(f" now BASE ACCURACY is bcome = [{base_accuracy}]\n\n")
                 metric_info_artifact = MetricInfoArtifact(  model_name=model_name,
                                                             model_object=model,
+                                                            train_mse=train_mse,
+                                                            test_mse=test_mse,
                                                             train_rmse=train_rmse,
                                                             test_rmse=test_rmse,
                                                             train_accuracy=train_acc,
                                                             test_accuracy=test_acc,
                                                             model_accuracy=model_accuracy,
-                                                            index_number=index_number)
+                                                            index_number=index_number,
+                                                            train_test_acc_threshold=train_test_acc_threshold)
 
                 logging.info(f"Acceptable Model Found -> {metric_info_artifact}.")
                 

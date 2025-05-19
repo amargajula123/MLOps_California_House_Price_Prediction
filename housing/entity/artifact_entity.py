@@ -29,7 +29,8 @@ ModelTrainerArtifact = namedtuple("ModelTrainerArtifact", ["is_trained",
                                                             "test_rmse",
                                                             "train_accuracy", 
                                                             "test_accuracy",
-                                                            "model_accuracy"])
+                                                            "model_accuracy",
+                                                            "train_test_acc_threshold"])
 
 # MetricInfoArtifact = namedtuple("MetricInfoArtifact",["model_name", 
 #                                                       "model_object", 
