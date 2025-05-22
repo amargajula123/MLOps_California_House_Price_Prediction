@@ -1,0 +1,115 @@
+{% extends 'header.html' %}
+
+{% block head %}
+<title>Index</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12"  style="margin-bottom:20px;">
+        <div class="row">
+            <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Want to learn project like this.
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Check About my data science learning journey...</h5>
+                <p class="card-text">
+                    It's a long road, but Full-stack data science is worth the effort! <br><br>
+                
+                    <strong>🔹 Programming (Python)</strong> <br>
+                    "I started with Python because it’s widely used in data science and beginner-friendly." <br><br>
+                
+                    <strong>🔹 Data Handling (Pandas, NumPy, SQL, MongoDB, Postman)</strong> <br>
+                    "I learned Pandas and NumPy for data manipulation." <br>
+                    "SQL and MongoDB helped me store and retrieve data efficiently." <br>
+                    "Postman was useful for testing APIs and working with data services." <br><br>
+                
+                    <strong>🔹 Data Visualization (Matplotlib, Seaborn)</strong> <br>
+                    "To understand data better, I used Matplotlib and Seaborn for creating graphs and charts." <br><br>
+                
+                    <strong>🔹 Statistics & Machine Learning (Supervised/Unsupervised)</strong> <br>
+                    "Learning statistics was crucial for understanding probability, hypothesis testing, and model evaluation." <br>
+                    "Then, I explored machine learning algorithms like regression, classification, and clustering." <br><br>
+                
+                    <strong>🔹 Model Building, Deployment & MLOps (GitHub, Heroku, MLOps)</strong> <br>
+                    "I built a machine learning model and trained it on real data." <br>
+                    "I used GitHub for version control and managing my project code." <br>
+                    "To deploy my model, I used Heroku, making it accessible as a web service." <br>
+                    "I also learned a bit about MLOps to manage and maintain models efficiently." <br>
+                </p>
+                <a class="btn btn-success" target="_blank" href="https://www.youtube.com/@gajulaamar9656">Check Course</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <iframe style="width:100%;height:100%" src="https://www.youtube.com/embed/odTz5D76sL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        </div>
+        </div>
+<div class="col-md-4 col-lg-4 col-sm-12">
+<div class="card">
+    <div class="card-header">
+       View Logs
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Log Files</h5>
+        <p class="card-text">All model training log file can be downloaded.</p>
+        <a class="btn btn-primary" href="/logs">Check Logs</a>
+    </div>
+</div>
+</div>
+
+<div class="col-md-4 col-lg-4 col-sm-12" style="margin-bottom:20px;">
+    <div class="card">
+        <div class="card-header">
+           View Artifacts
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Artifact Files</h5>
+            <p class="card-text">All model artifacts file can be downloaded.</p>
+            <a class="btn btn-primary" href="/artifact">Check Artifacts</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+               View Trained Models
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Trained Models</h5>
+                <p class="card-text">All model file can be downloaded.</p>
+                <a class="btn btn-primary" href="/saved_models">Check Models</a>
+            </div>
+        </div>
+        </div>
+    <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+              Estimate California price
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Access California estimator</h5>
+                <p class="card-text">Form will be displayed. Submit the form to get estimated price for california house.</p>
+                <a class="btn btn-primary" href="/predict">Get Estimated Price</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+            <div class="card">
+                <div class="card-header">
+                  Train housing estimator model.
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Initiate model training.</h5>
+                    <p class="card-text">Model training will be done. Files such as log, artifact and models can be viewed and downloaded using appropriate link.</p>
+                    <a class="btn btn-danger" href="/train">Initiate Training</a>
+                </div>
+            </div>
+            </div>
+</div>
+{% endblock %}

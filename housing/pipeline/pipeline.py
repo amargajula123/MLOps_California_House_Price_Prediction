@@ -2,17 +2,20 @@ from housing.config.configuration import Configuration
 from housing.exception import HousingException
 from housing.logger import logging
 
+#entity structure
 from housing.entity.config_entity import DataIngestionConfig,ModelTrainerConfig
 from housing.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,\
     DataTransformationArtifact,ModelTrainerArtifact,ModelEvaluationArtifact,ModelPusherArtifact
+
+#components configuration
 from housing.component.data_ingestion import DataIngestion
 from housing.component.data_validation import DataValidation
 from housing.component.data_transformation import DataTransformation
 from housing.component.model_trainer import ModelTrainer
 from housing.component.model_evaluation import ModelEvaluation
 from housing.component.model_pusher import ModelPusher
-import os,sys
 
+import os,sys
 import uuid
 from threading import Thread  
 from collections import namedtuple
