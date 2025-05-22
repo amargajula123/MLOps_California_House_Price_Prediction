@@ -6,7 +6,7 @@ MLOps_California_House_Price_Prediction is an end-to-end machine learning projec
 
 
 Application url:
-[HousingPredictor](https://ml-regression-app.herokuapp.com/)
+[HousingPredictor](https://house-price-predict-regression.herokuapp.com/)
 .
 
 1. [Github Account](https://github.com)
@@ -105,8 +105,9 @@ git restore/remove <filename>
 
 To setup CI/CD pipeline in heroku we need 3 information
 
-1. HEROKU_EMAIL = amargknr@gmail.com
-2. HEROKU_API_KEY = HRKU-50374ebf-b026-421f-a45a-ed64465edf89
+1. HEROKU_EMAIL = 
+2. HEROKU_API_KEY = 
+                    
 3. HEROKU_APP_NAME = ml-app-test
 
 To stop app
