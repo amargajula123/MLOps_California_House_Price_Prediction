@@ -113,7 +113,11 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
             logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}].") 
 
             if diff_test_train_acc > train_test_acc_threshold: # train_test_acc_threshold = 0.05:
-                logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {train_test_acc_threshold}.\nSo we dont take this one, which accuracy is close to 0.05 will take that as best Model")
+                logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {train_test_acc_threshold}.\
+                             \nSo we dont take this one, which accuracy is close to 0.05 will take that as best Model\n\
+                               With respect to any ML algorithm/Model ex:-(LinearRgression) the Train and Test accuracy\n \
+                              diffrence is grater then {train_test_acc_threshold} so we can not accept becoze it could be\n\
+                              Overfitting or Underfiting Models not the Generalised Models")
 
             logging.info(f"Train root mean squared error: [{train_rmse}].")
             logging.info(f"Test root mean squared error: [{test_rmse}].")
@@ -208,13 +212,13 @@ class ModelFactory:
         """
         try:
             if not isinstance(property_data, dict):
-                raise Exception("property_data parameter required to dictionary")
-            print(property_data)
+                raise Exception(f"'property_data' parameter required to dictionary, {property_data} its not a dictionary")
+            print(f"property_data format -> {property_data}")
             for key, value in property_data.items():
                 logging.info(f"Executing:$ {str(instance_ref)}.{key}={value}")
-                setattr(instance_ref, key, value) # setattr(LinearRegression, 'fit_intercept', True)
+                setattr(instance_ref, key, value) # setattr(LinearRegression, fit_intercept=True)
                 # setattr is responsible for if you want to set dynamically the parameters of any ML model class
-                # you can use "setattr" function {check the notebook inside importlib.ipynb there explained 
+                # you can use "setattr" function {check the notebook inside imporli_setattribt.ipynb there explained 
                 # "setattr" fun similar
             return instance_ref
         except Exception as e:
@@ -279,8 +283,8 @@ class ModelFactory:
             
             #logging.info(f"grid_search_cv(estimator=,param_grid= ) = [{grid_search_cv}]")
             
-            grid_search_cv = ModelFactory.update_property_of_class(grid_search_cv,
-                                                                   self.grid_search_property_data)
+            grid_search_cv = ModelFactory.update_property_of_class(instance_ref=grid_search_cv,
+                                                                   property_data=self.grid_search_property_data)
 
             
             logging.info(f"All models and parameters and GridSearchCV parameters are set now FIT the DATASET\n\n")
@@ -315,7 +319,7 @@ class ModelFactory:
                 model_obj_ref = ModelFactory.class_for_name(module_name=model_initialization_config[MODULE_KEY],
                                                             class_name=model_initialization_config[CLASS_KEY]
                                                             )
-                model = model_obj_ref() # model is nothing but object of the model. ex like {model = LinearRegression()}
+                model = model_obj_ref() # model is nothing but object of the Class. ex like {model = LinearRegression()}
                 
                 if PARAM_KEY in model_initialization_config:
                     model_obj_property_data = dict(model_initialization_config[PARAM_KEY])
@@ -338,7 +342,8 @@ class ModelFactory:
         except Exception as e:
             raise HousingException(e, sys) from e
 
-    def initiate_best_parameter_search_for_initialized_model(self, initialized_model: InitializedModelDetail,
+    def initiate_best_parameter_search_for_initialized_model(self, 
+                                                             initialized_model: InitializedModelDetail,
                                                              input_feature,
                                                              output_feature) -> GridSearchedBestModel:
         """
@@ -362,6 +367,10 @@ class ModelFactory:
                                                               initialized_model_list: List[InitializedModelDetail],
                                                               input_feature,
                                                               output_feature) -> List[GridSearchedBestModel]:
+        """
+        This functon is only for more then 1 model (2 ,3 4 .... models) to search 
+        GridSearch best parameters, search for initialised models
+        """
 
         try:
             self.grid_searched_best_model_list = []
@@ -393,6 +402,10 @@ class ModelFactory:
     def get_best_model_from_grid_searched_best_model_list(grid_searched_best_model_list: List[GridSearchedBestModel],
                                                           base_accuracy=0.6
                                                           ) -> BestModel:
+        """
+        After the GridSearch for every model it will compare the best parameters and score
+        based on that it will give the best_model after GridSearch,
+        """
         try:
             best_model = None
             for grid_searched_best_model in grid_searched_best_model_list:
@@ -408,7 +421,7 @@ class ModelFactory:
         except Exception as e:
             raise HousingException(e, sys) from e
 
-    def get_best_model(self, X, y,base_accuracy=0.6) -> BestModel:
+    def get_best_model(self, X, y,base_accuracy:float=0.6) -> BestModel:
         """
         this get_best_model function will work on Training dataset 
         inside this function we have functions like 
@@ -423,7 +436,7 @@ class ModelFactory:
         try:
             logging.info("Started Initializing model from config file -> { model.yaml }")
             initialized_model_list = self.get_initialized_model_list() 
-            logging.info(f"Initialized model: {initialized_model_list} lennght = {len(initialized_model_list)}")
+            logging.info(f"Initialized model list: {initialized_model_list} lennght = {len(initialized_model_list)}")
 
             grid_searched_best_model_list = self.initiate_best_parameter_search_for_initialized_models(
                                                  initialized_model_list=initialized_model_list,

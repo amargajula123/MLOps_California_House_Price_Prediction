@@ -53,6 +53,10 @@ class ModelPusher:
         logging.info(f"{'=' * 20}Model Pusher log completed.{'=' * 20}")
 
 
+# model pusher component will take the newly trained model / best performing Model and it will 
+# push that model into Saved_Model_directory, or there is also one onther scenario to push that
+# model into the cloud,
+
         # def upload_trained_modele_file_to_the_cloud(self):
         # """
         # this fuction will helps you to save

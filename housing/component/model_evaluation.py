@@ -140,7 +140,7 @@ class ModelEvaluation:
                                                              y_test=test_target_arr,
                                                              base_accuracy=self.model_trainer_artifact.model_accuracy,
                                                              train_test_acc_threshold=self.model_trainer_artifact.train_test_acc_threshold
-                                                             )
+                                                              )
             logging.info(f"Model evaluation completed. model metric artifact: {metric_info_artifact}")
 
 
@@ -171,6 +171,16 @@ class ModelEvaluation:
     def __del__(self):
         logging.info(f"{'=' * 20}Model Evaluation log completed.{'=' * 20} \n\n")
 
+
+# In model evaluation phase, what we do is that we actually check if the is any model is
+# available in the production. If it is available in the production, then what we actually
+# do in the model evaluation phase is that we actually check the model that is in the
+# production and newly trained model which is actually done after running the pipeline.
+# So, by comparing these two models, like the model that is in the production and the newly 
+# trained model, based on both comparison, which model is going to give me the best accuracy, 
+# that will be actually going to select. The selected, the best accuracy model which means the
+# newly trained model, what actually will be taken ,
+#  if there is any no model available in the production then newly Trained model will get selected
 
 # -----------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
