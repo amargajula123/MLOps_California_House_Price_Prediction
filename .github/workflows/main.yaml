@@ -36,7 +36,21 @@ jobs:
       - name: Set Heroku to Use Docker
         run: heroku stack:set container --app ${{ secrets.HEROKU_APP_NAME }}
 
-      # Step 6: Deploy the Docker container to Heroku
+      # Step 6: Login to Heroku Container Registry
+      - name: Login to Heroku Container Registry
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
+
+      # Step 7: Build Docker image
+      - name: Build Docker image
+        run: docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+
+      # Step 8: Push Docker image to Heroku Container Registry
+      - name: Push Docker image
+        run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
+
+      # Step 9: Deploy the Docker container to Heroku (release)
       - name: Deploy to Heroku Using Docker
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
