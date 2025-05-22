@@ -4,10 +4,8 @@ MLOps_California_House_Price_Prediction is an end-to-end machine learning projec
 
 ### Software and account Requirements
 
-
-Application url:
+Application of house-price-prediction url:
 [HousingPredictor](https://house-price-predict-regression.herokuapp.com/)
-.
 
 1. [Github Account](https://github.com)
 2. [Heroku Account](https://dashboard.heroku.com/login)
