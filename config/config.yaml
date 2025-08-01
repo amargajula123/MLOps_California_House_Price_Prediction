@@ -32,7 +32,7 @@ data_transformation_config:
   transformed_test_dir: test
   preprocessing_dir: preprocessed
   preprocessed_object_file_name: preprocessed.pkl
-  
+
 # model trainging configurations. 
 model_trainer_config:
   trained_model_dir: trained_model

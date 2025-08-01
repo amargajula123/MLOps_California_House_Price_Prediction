@@ -13,7 +13,10 @@ Application of house-price-prediction url:
 4. [GIT cli](https://git-scm.com/downloads)
 5. [GIT Documentation](https://git-scm.com/docs/gittutorial)
 
-
+for searchbar in any file in the VsCode
+```
+ctrl+f
+```
 Creating conda environment 
 ```
 1.conda create -p <environment_name> 
@@ -22,12 +25,15 @@ Creating conda environment
 
 Discription about "-p" , "-n" and "Vertual Environment"
 ```
--p =  -p is the prefix if you use "-p" then your Vertual Environment(venv)
-      will created inside your Current Working Dir
+-p =  -p is the prefix if you use "-p" then your "Vertual Environment(venv)"
+      will created, inside your "Current Working Dir".
 
-      if you use "-n" then your Vertual Environment(venv)
-      will created where ever your "Anaconda" is installed,
-      there it will going to install the Vertual Environment(venv)
+      here i wanted to install "Vertual Environment(venv)" in my Corrent
+      Working Dir so i used "-p"
+
+      if you use "-n" then your "Vertual Environment(venv)" will created 
+      where your "Anaconda" is installed, there it will going to install
+      the Vertual Environment(venv)
 
 venv = "folder", one folder gets created and inside that all the project
        required libraries getting stored which we installed,
@@ -42,6 +48,7 @@ OR
 conda activate venv 
 ```
 
+To install all the libraries that are available in the requirements.txt
 ```
 pip install -r requirements.txt
 ```
@@ -49,6 +56,27 @@ pip install -r requirements.txt
 To clear the terminal screen 
 ```
 cls
+```
+
+To clone Repo from the github
+```
+git clone <git repo URL>
+
+git clone is actuually used for one time when we want 
+to clone any repository from the github...
+```
+
+Tone pull file/folders from git hub
+```
+git pull origin main
+
+Or if you’ve cloned already and you're inside the repo:
+
+git pull
+
+git pull is for there will some content is available in the github
+and that is not available in your local system them you supposed to
+do git pull 
 ```
 
 To Add files to git
@@ -138,8 +166,18 @@ To check running container in docker
 ```
 docker ps
 ```
-
-Tos stop docker conatiner
+To download the docker image
+```
+docke pull <image name>
+```
+To run th docker image
+```
+docker run <image name>
+```
+```
+docker 'pull' and 'run' the same thing we will done on heroku
+```
+To stop docker conatiner
 ```
 docker stop <container_id>
 ```

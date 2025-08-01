@@ -113,11 +113,13 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
             logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}].") 
 
             if diff_test_train_acc > train_test_acc_threshold: # train_test_acc_threshold = 0.05:
-                logging.info(f"Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {train_test_acc_threshold}.\
-                             \nSo we dont take this one, which accuracy is close to 0.05 will take that as best Model\n\
-                               With respect to any ML algorithm/Model ex:-(LinearRgression) the Train and Test accuracy\n \
-                              diffrence is grater then {train_test_acc_threshold} so we can not accept becoze it could be\n\
-                              Overfitting or Underfiting Models not the Generalised Models")
+
+                Info = f"""
+                           Difference b/w test & train accuracy: [{diff_test_train_acc}] is greter then {train_test_acc_threshold}.
+                           So we dont take this one, which accuracy is close to 0.05 will take that as best Model With respect to 
+                           any ML algorithm/Model ex:-(LinearRgression) the Train and Test accuracy diffrence is grater then {train_test_acc_threshold}
+                           so we can not accept becoze it could be 'Overfitting' or 'Underfiting' Models not the 'Generalised Models'"""
+                logging.info(Info)
 
             logging.info(f"Train root mean squared error: [{train_rmse}].")
             logging.info(f"Test root mean squared error: [{test_rmse}].")
