@@ -75,7 +75,7 @@ Or if you’ve cloned already and you're inside the repo:
 git pull
 
 git pull is for there will some content is available in the github
-and that is not available in your local system them you supposed to
+and that is not available in your local system then you supposed to
 do git pull 
 ```
 
@@ -89,7 +89,7 @@ OR
 git add <file_name>
 ```
 
-> Note: To ignore file or folder from git we can write name of file/folder in .gitignore file
+> Note: To ignore 'file' or 'folder' from 'git' we can write name of file/folder in ".gitignore" file
 
 To check the git status 
 ```
@@ -196,29 +196,31 @@ Install ipykernel for jupyter notebook
 pip install ipykernel
 ```
 what is stratified split ?
+```
 Ans :-
     what is the "data distribution" with respect to "training dataset" is to be equal to the
     "data distribution" with respect to "testing dataset" is called "stratified split"
-
+```
 why we are doing straitified split ?
-ans :-
+```
+Ans :-
      when you train your model with the help of training dataset and we know training is the 
      representation of Population dataset, so after training our model
      we also need to perform test the model/evaluate with "test dataset", so it require that 
      the distribution of "test dataset" is also similer to the trainig dataset 
-
+```
 Data Drift:
 When your "Datset" statistics gets change we call it as "data drift"
 
 what we do in Data_draft ?
-
+```
 Ans:-
 we try to check the statistics of one dataset with the another dataset if the
 statistics of both dataset "are SAME" there is 0 "Data_drift".
 if the statistics of both dataset "are NOT SAME" there will be "Data_drift".
 bassically we  compare statistics of both datasets
 
-
+```
 
 
 
