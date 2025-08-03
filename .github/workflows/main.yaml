@@ -54,6 +54,10 @@ jobs:
       - name: Deploy to Heroku Using Docker
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
+        # Image = plan,
+        # Container = product,
+        # Deploying to Heroku = putting that product online to be used.
+        
           # 🔐 Email associated with your Heroku account
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           

@@ -8,5 +8,3 @@ evidently==0.6.0
 dill
 matplotlib
 -e .
-
-

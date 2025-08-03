@@ -182,8 +182,27 @@ To stop docker conatiner
 docker stop <container_id>
 ```
 
-gunicorn :=  #gunicorn which is used to run  flask 
-          # application its basically designed for Linex based system 
+gunicorn := # gunicorn which is used to run flask application its basically designed
+            # for "Linex based system" ,
+            gunicorn is web server gateway interfase its a program which is specifically
+            developed/written for deploying web application or Api's
+
+
+
+what happens with github action Trigger ?
+```
+Ans:-
+When a GitHub Actions trigger occurs  the entire workflow which is inside the github action will
+run on "Ubuntu system" which is provided by Github Action, the thing which we executed like 
+
+The following steps are executed on that Ubuntu machine:
+1.Building the Docker image
+2.Pushing the Docker image to a container registry
+3.Deploying the container to Heroku
+
+All these actions are handled by the "GitHub-hosted Ubuntu system". Once the Docker image is built 
+and pushed, it gets deployed to the Heroku app.
+```
 
 ```
 python setup.py install
